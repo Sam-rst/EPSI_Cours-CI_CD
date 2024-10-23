@@ -44,14 +44,14 @@ Rédiger le readme.md du projet en anglais ou français indiquant :
 
 ### Sous Linux
 ```bash
-python venv -m env
-env/Scripts/activate
+python3 -m venv env
+source env/bin/activate
 pip install -r requirements.txt
 ```
 
 ### Sous Windows
 ```bash
-python venv -m env
+python3 -m venv env
 env/Scripts/activate
 pip install -r requirements.txt
 ```
