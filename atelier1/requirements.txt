@@ -1,3 +1,2 @@
-beautifulsoup4
-markdownify
-urllib3
+jinja2
+markdown
