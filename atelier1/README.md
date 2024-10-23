@@ -47,11 +47,28 @@ Rédiger le readme.md du projet en anglais ou français indiquant :
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
+sudo apt update
+sudo apt install git
+git clone https://github.com/votre-repo/projet.git
+cd projet
 ```
 
 ### Sous Windows
 ```bash
-python3 -m venv env
+python -m venv env
 env/Scripts/activate
 pip install -r requirements.txt
 ```
+### commandes du build de votre ou vos programmes
+```bash	
+
+```
+
+### commandes et éventuelles options d'appel
+```bash
+
+```
+### membres du groupe Prénom + initiale du nom
+```bash
+Samuel R
+Hugo T-D
