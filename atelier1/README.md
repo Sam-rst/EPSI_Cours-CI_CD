@@ -36,3 +36,22 @@ Rédiger le readme.md du projet en anglais ou français indiquant :
 - les commandes du build de votre ou vos programmes,
 - les commandes et éventuelles options d'appel
 - les membres du groupe Prénom + initiale du nom
+
+
+## Requirements
+
+## Installation des packages python
+
+### Sous Linux
+```bash
+python venv -m env
+env/Scripts/activate
+pip install -r requirements.txt
+```
+
+### Sous Windows
+```bash
+python venv -m env
+env/Scripts/activate
+pip install -r requirements.txt
+```
