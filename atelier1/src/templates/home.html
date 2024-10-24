@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="d-flex justify-content-center">Actualités de l'association</h1>
-<div class="container d-flex align-content-around flex-wrap justify-content-between align-self-center">
-    {% for actualite in actualites %}
-    <div class="card my-3 d-flex flex-column" style="width: 18rem;">
-        <img src="{{ actualite.imageFichier }}" class="card-img-top" alt="{{ actualite.titre }}">
+<div class="container">
+    <div class="card bg-light-subtle">
+        <h1 class="card-header text-center">Actualités de l'association</h1>
         <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text">{{ actualite.extrait }}</p>
-            <a href="{{ actualite.lien }}" class="btn btn-primary">Lire la suite</a>
+            <div class=" d-flex align-content-around flex-wrap justify-content-between align-self-center">
+                {% for actualite in actualites %}
+                <div class="card my-3" style="width: 25rem;">
+                    <img src="{{ actualite.imageFichier }}" class="card-img-top" alt="{{ actualite.titre }}">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">{{ actualite.extrait }}</p>
+                        <div class="d-flex justify-content-center mt-auto">
+                            <a href="{{ actualite.lien }}" class="btn btn-dark">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
