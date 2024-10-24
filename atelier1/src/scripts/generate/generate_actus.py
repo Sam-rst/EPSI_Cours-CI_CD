@@ -12,6 +12,8 @@ def generer_actualites():
         return
 
     try:
+        # Génération du dossier actus si il n'existe pas déjà
+        os.makedirs('../../public/actus', exist_ok=True)
         # Parcourir les fichiers .md dans data/md
         for filename in os.listdir('../data/md'):
             if filename.endswith('.md'):
