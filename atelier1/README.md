@@ -1,54 +1,37 @@
-# Atelier 1 - Site Flat-File
+# Atelier 1 - Vivre aux lilas
 
 ## Introduction
-Ce projet, développé par **Samuel R.** et **Hugo TD.**, vise à créer un site web dynamique généré à partir de fichiers Markdown (MD), d'images associées et de données au format CSV, en utilisant un système de gestion de contenu flat-file (Flat File CMS). L'objectif est de démontrer nos compétences en développement web, en intégration continue et en gestion de contenu. Ce site servira de plateforme pour l'association de quartier fictive "Vivre aux lilas", permettant d'afficher des actualités, des informations sur les membres et d'autres contenus pertinents. Ce projet sera également l'occasion d'appliquer des pratiques de développement modernes et de collaborer efficacement en équipe. Un système de linter de code python pour analyser le code 
-
-## Table des matières
-- [Prérequis](#prérequis)
-- [Installation des packages Python](#installation-des-packages-python)
-  - [Sous Windows](#sous-windows)
-  - [Sous Linux](#sous-linux)
-- [Lancement de l'application](#lancement-de-lapplication)
-  - [Sous Windows](#sous-windows-1)
-  - [Sous Linux](#sous-linux-1)
-- [Lancement du serveur](#lancement-du-serveur)
-  - [Sous Windows](#sous-windows-2)
-  - [Sous Linux](#sous-linux-2)
-- [Génération des pages HTML](#génération-des-pages-html)
-  - [Sous Windows](#sous-windows-3)
-  - [Sous Linux](#sous-linux-3)
-- [Étapes du projet](#étapes-du-projet)
-  - [Étape 1 - Maquette](#étape-1---maquette)
-  - [Étape 2 - Génération](#étape-2---génération)
-  - [Étape 3 - Documentation du build](#étape-3---documentation-du-build)
+Ce projet, conçu par **Samuel R.** et **Hugo TD.**, a pour objectif de développer un site web dynamique généré à partir de fichiers Markdown (MD), d’images et de données au format CSV, utilisant un système de gestion de contenu flat-file (Flat File CMS). Ce site web est destiné à l'association de quartier fictive "Vivre aux Lilas" et présente des actualités, des informations sur les membres, ainsi que d'autres contenus pertinents. Le projet permet d’explorer des pratiques modernes en développement web, gestion de contenu, intégration continue, et collaboration d’équipe.
 
 ## Prérequis
-Voici les prérequis : 
-- python 3.x
+Avant de commencer, assurez-vous que votre environnement répond aux exigences suivantes :
+- **Python 3.x**
 
-## Installation des packages Python
-Dans cette section, vous trouverez les instructions pour installer les dépendances nécessaires au projet. Les instructions sont fournies pour les utilisateurs de Windows et de Linux.
+## Maquettage
+Les maquettes du site ont été créées avec **Figma** pour visualiser les pages générées via le code HTML produit par nos scripts Python :
+
+- [Maquette fonctionnelle](https://www.figma.com/proto/A7XB9N5xIFljSMUCcSJmdS/Vivre-aux-lilas?node-id=0-1&t=ffc2pUzq8Q6EPEvB-1)
+- [Maquette technique](https://www.figma.com/design/A7XB9N5xIFljSMUCcSJmdS/Vivre-aux-lilas?node-id=0-1&m=dev&t=ffc2pUzq8Q6EPEvB-1)
+
+## Installation des dépendances
+Installez les modules Python nécessaires à l’aide du fichier `requirements.txt`. Suivez les instructions ci-dessous selon votre système d’exploitation. Assurez-vous de bien être dans le dossier `atelier1/`.
 
 ### Sous Windows
 ```bash
-# Installation des modules Python
-cd atelier1/
 python -m venv env
-env/Scripts/activate
+env\Scripts\activate
 pip install -r requirements.txt
 ```
 
 ### Sous Linux
 ```bash
-# Installation des modules Python
-cd atelier1/
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 ```
 
-## Lancement de l'application
-Cette section explique comment démarrer l'application principale. Les instructions sont fournies pour les deux systèmes d'exploitation.
+## Démarrage de l'application
+Pour exécuter l'application principale, utilisez la commande appropriée à votre système d'exploitation.
 
 ### Sous Windows
 ```bash
@@ -62,65 +45,62 @@ cd src/scripts/
 python3 main.py
 ```
 
-## Lancement du serveur
-Ici, vous apprendrez comment démarrer le serveur local pour tester votre application. Les commandes sont spécifiques à chaque système d'exploitation.
+## Lancement des scripts spécifiques
+Si vous souhaitez lancer indépendemment les 2 scripts : 
+- `serveur_local.py` : lance le serveur en localhost
+- `generate_pages.py` : génère les différentes pages html venant des fichiers md pour les actualités, du fichier csv pour les membres et des autres templates de `src/templates`
 
-### Sous Windows
+### Serveur local
 ```bash
+# Windows
 python serveur_local.py
-```
 
-### Sous Linux
-```bash
+# Linux
 python3 serveur_local.py
 ```
 
-## Génération des pages HTML
-Cette section fournit les commandes nécessaires pour générer les pages HTML à partir des fichiers Markdown et CSV. Les instructions sont également séparées par système d'exploitation.
-
-### Sous Windows
+### Génération des pages HTML
 ```bash
+# Windows
 python generate_pages.py
-```
 
-### Sous Linux
-```bash
+# Linux
 python3 generate_pages.py
 ```
 
-## Fonctionnement du linter flake8
-Flake8 est un module python permettant de vérifier la qualité du code python de notre projet et de le corriger en conséquence.
+## Linter du code avec Flake8
+**Flake8** est utilisé pour assurer la qualité du code Python. Exécutez Flake8 comme suit :
 
-### Sous Windows et Linux
 ```bash
 flake8 ./<nom-du-fichier-ou-du-dossier>
 ```
 
-# Étapes du projet
-Dans cette section, vous trouverez un aperçu des différentes étapes à suivre pour réaliser le projet, y compris la création de maquettes, la génération de contenu et la documentation.
+## Étapes du projet
+Voici les différentes étapes suivies dans ce projet :
 
-### Étape 1 - Maquette
-Proposer une maquette pour l'association de quartier factice "Vivre aux lilas" contenant :
-- Une page d'accueil capable d'afficher les actualités de l'association.
-- Une page détail d'actualité.
-- Une page membres du bureau.
+### Étape 1 - Création de la maquette
+Proposition de maquettes pour le site "Vivre aux Lilas" contenant :
+- Une page d'accueil pour les actualités de l'association.
+- Une page détaillant chaque actualité.
+- Une page pour les membres du bureau.
 
-**Note :** Les données de l'archive fournie devront pouvoir être affichées sur le site, mais la maquette ne reprend pas forcément leur contenu. Le site utilise SCSS pour ses feuilles de style ou un framework CSS personnalisable avec SCSS (et personnalisé selon vos codes couleur).
+**Remarque** : Les données fournies devront pouvoir être affichées sur le site. Le style utilise SCSS ou un framework CSS personnalisable avec SCSS adapté aux couleurs choisies.
 
-### Étape 2 - Génération
-En privilégiant la convention plutôt que la configuration, écrire un ou plusieurs programmes ou scripts dans le langage de votre choix qui génère(nt) côté serveur les pages du site d'après les fichiers md et csv fournis en ligne de commande.
+### Étape 2 - Génération des pages
+En suivant les conventions, des scripts Python génèrent les pages HTML depuis les fichiers MD et CSV. Le rendu final ne nécessite pas d'exécution de code côté serveur, sauf JavaScript pour des filtres côté client.
 
-Ainsi, lors de sa consultation, aucun code serveur ne s'exécutera (pré). Du JavaScript élémentaire peut être envisagé côté client pour proposer des filtres, par exemple.
-
-**Notes :**
-- On suppose les fichiers déjà décompressés.
-- Vous pouvez appuyer toute ou partie de votre génération sur l'appel à des applications tierces (Ex : pandoc pour convertir le markdown en html).
-- Votre ou vos applications recevant les noms de fichiers à traiter en argument, vous n'avez pas d'exploration de répertoire à coder.
+**Notes** :
+- Les fichiers à traiter sont fournis décompressés.
+- Utilisation possible d’outils externes comme *pandoc* pour la conversion Markdown en HTML.
+- Les noms de fichiers sont passés en arguments, donc pas besoin de parcourir les répertoires.
 
 ### Étape 3 - Documentation du build
-Rédiger le README.md du projet en anglais ou français indiquant :
-- Les prérequis systèmes pour un build et une génération du site.
-- Leur installation sur un Linux (au choix).
-- Les commandes du build de votre ou vos programmes.
-- Les commandes et éventuelles options d'appel.
-- Les membres du groupe Prénom + initiale du nom.
+Ce fichier README fournit toutes les informations nécessaires :
+- Prérequis système pour le build et la génération.
+- Instructions d'installation sur Linux.
+- Commandes pour générer le site et options disponibles.
+- Membres de l'équipe : Samuel R., Hugo TD.
+
+---
+
+Cela offre une structure claire et une présentation professionnelle de votre projet !

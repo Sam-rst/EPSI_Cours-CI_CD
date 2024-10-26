@@ -1,7 +1,0 @@
-# Ignorer le dossier env
-atelier1/env/
-# Ignorer les fichiers HTML dans le doccier public
-atelier1/public/membres.html
-atelier1/public/index.html
-atelier1/public/actus/
-
