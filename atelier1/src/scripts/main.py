@@ -7,4 +7,3 @@ if __name__ == "__main__":
         lancer_serveur_local()
     except Exception as e:
         print(f"Une erreur inattendue s'est produite : {e}")
-

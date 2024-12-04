@@ -2,10 +2,12 @@ from generate.generate_actus import generer_actualites
 from generate.generate_actus_home import generer_actualites_home
 from generate.generate_membres import generer_membres
 
+
 def generer_pages():
     generer_actualites()
     generer_actualites_home()
     generer_membres()
+
 
 if __name__ == "__main__":
     try:

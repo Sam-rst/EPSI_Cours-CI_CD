@@ -2,6 +2,7 @@ import os
 import markdown
 from jinja2 import Environment, FileSystemLoader
 
+
 def generer_actualites_home():
     try:
         # Configurer Jinja2
@@ -20,28 +21,38 @@ def generer_actualites_home():
                 try:
                     with open(os.path.join('../data/md', filename), 'r') as f:
                         contenu_md = f.read()
-                    
+
                     # Convertir Markdown en HTML
                     contenu_html = markdown.markdown(contenu_md)
-                    
+
                     # Écrire le fichier HTML
                     nom_fichier_html = os.path.splitext(filename)[0] + '.html'
                     mots = os.path.splitext(filename)[0].split('-')
-                    imageFichier = '-'.join(mots[-2:]) + '.webp' if len(mots) > 1 else os.path.splitext(filename)[0]
-                    imageFichier = f'assets/img/{imageFichier}'  # Chemin d'accès à l'image
+                    if len(mots) > 1:
+                        imageFichier = '-'.join(mots[-2:]) + '.webp'
+                    else:
+                        os.path.splitext(filename)[0]
+
+                    # Chemin d'accès à l'image
+                    imageFichier = f'assets/img/{imageFichier}'
 
                     # Ajouter l'actualité à la liste
                     actualites.append({
-                        'titre': os.path.splitext(filename)[0],  # Titre basé sur le nom du fichier
-                        'extrait': contenu_html[:100] + '...',  # Extrait des premiers 100 caractères
-                        'lien': f'actus/{nom_fichier_html}',  # Lien vers l'article complet
+                        # Titre basé sur le nom du fichier
+                        'titre': os.path.splitext(filename)[0],
+                        # Extrait des premiers 100 caractères
+                        'extrait': contenu_html[:100] + '...',
+                        # Lien vers l'article complet
+                        'lien': f'actus/{nom_fichier_html}',
                         'imageFichier': imageFichier
                     })
 
                 except IOError as e:
-                    print(f"Erreur lors de la lecture/écriture du fichier {filename} : {e}")
+                    print(f"Erreur lors de la lecture/écriture du \
+                        fichier {filename} : {e}")
                 except Exception as e:
-                    print(f"Erreur lors du traitement du fichier {filename} : {e}")
+                    print(f"Erreur lors du traitement du fichier \
+                        {filename} : {e}")
     except Exception as e:
         print(f"Erreur lors du parcours des fichiers : {e}")
     else:
@@ -52,8 +63,9 @@ def generer_actualites_home():
 
     print("Génération des actualités terminée.")
 
+
 if __name__ == "__main__":
     try:
-        generer_actualites()
+        generer_actualites_home()
     except Exception as e:
         print(f"Une erreur inattendue s'est produite : {e}")
