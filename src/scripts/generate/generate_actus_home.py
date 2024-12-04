@@ -19,7 +19,9 @@ def generer_actualites_home():
         for filename in os.listdir('../data/md'):
             if filename.endswith('.md'):
                 try:
-                    with open(os.path.join('../data/md', filename), 'r', encoding='utf-8') as f:
+                    with open(os.path.join('../data/md', filename),
+                              'r',
+                              encoding='utf-8') as f:
                         contenu_md = f.read()
 
                     # Convertir Markdown en HTML
