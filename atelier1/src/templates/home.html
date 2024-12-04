@@ -1,25 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="card bg-light-subtle">
-        <h1 class="card-header text-center">Actualités de l'association</h1>
-        <div class="card-body">
-            <div class=" d-flex align-content-around flex-wrap justify-content-between align-self-center">
-                {% for actualite in actualites %}
-                <div class="card my-3" style="width: 25rem;">
-                    <img src="{{ actualite.imageFichier }}" class="card-img-top" alt="{{ actualite.titre }}">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">{{ actualite.extrait }}</p>
-                        <div class="d-flex justify-content-center mt-auto">
-                            <a href="{{ actualite.lien }}" class="btn btn-dark">Lire la suite</a>
+<div class="container d-flex flex-column justify-content-center">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/assets/img/logo.png" alt="Logo de 'Vivre aux lilas'" width="250"
+            height="250">
+        <h1>Vivre aux lilas</h1>
+        <p class="lead">Bienvenue sur notre blog vous permettant de recevoir et connaître toutes les nouvelles
+            actualités autour de vous !</p>
+    </div>
+    <div class="py-5 text-center">
+        <h2>Membres de l'association</h2>
+        <a class="btn btn-outline-primary btn-lg mt-3" href="membres.html">Voir tous les membres</a>
+    </div>
+    <div class="card bg-light-subtle mt-5">
+        <h2 class="card-header text-center">Actualités</h1>
+            <div class="card-body">
+                <div class=" d-flex align-content-around flex-wrap justify-content-between align-self-center">
+                    {% for actualite in actualites %}
+                    <div class="card my-3" style="width: 25rem;">
+                        <img src="{{ actualite.imageFichier }}" class="card-img-top" alt="{{ actualite.titre }}">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text">{{ actualite.extrait }}</p>
+                            <div class="d-flex justify-content-center mt-auto">
+                                <a href="{{ actualite.lien }}" class="btn btn-dark">Lire la suite</a>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
-        </div>
     </div>
 </div>
 {% endblock %}
