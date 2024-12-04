@@ -24,8 +24,8 @@ def generer_membres():
                 "email": row[2],
                 "statut": row[3],
             })
-        output = template.render(membres=membres)
-        with open('../../public/membres.html', 'w') as f:
+        output = template.render(membres=membres, file_depth="")
+        with open('../../public/membres.html', 'w', encoding='utf-8') as f:
             f.write(output)
 
         print("Génération des membres terminée.")

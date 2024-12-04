@@ -19,7 +19,7 @@ def generer_actualites_home():
         for filename in os.listdir('../data/md'):
             if filename.endswith('.md'):
                 try:
-                    with open(os.path.join('../data/md', filename), 'r') as f:
+                    with open(os.path.join('../data/md', filename), 'r', encoding='utf-8') as f:
                         contenu_md = f.read()
 
                     # Convertir Markdown en HTML
@@ -57,8 +57,8 @@ def generer_actualites_home():
         print(f"Erreur lors du parcours des fichiers : {e}")
     else:
         # Générer le HTML final avec le template
-        output = template.render(actualites=actualites)
-        with open('../../public/index.html', 'w') as f:
+        output = template.render(actualites=actualites, file_depth="")
+        with open('../../public/index.html', 'w', encoding='utf-8') as f:
             f.write(output)
 
     print("Génération des actualités terminée.")

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container d-flex flex-column justify-content-center">
     <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/assets/img/logo.png" alt="Logo de 'Vivre aux lilas'" width="250"
+        <img class="d-block mx-auto mb-4" src="./{{ file_depth }}assets/img/logo.png" alt="Logo de 'Vivre aux lilas'" width="250"
             height="250">
         <h1>Vivre aux lilas</h1>
         <p class="lead">Bienvenue sur notre blog vous permettant de recevoir et connaître toutes les nouvelles
@@ -11,7 +11,7 @@
     </div>
     <div class="py-5 text-center">
         <h2>Membres de l'association</h2>
-        <a class="btn btn-outline-primary btn-lg mt-3" href="membres.html">Voir tous les membres</a>
+        <a class="btn btn-outline-primary btn-lg mt-3" href="./{{ file_depth }}membres.html">Voir tous les membres</a>
     </div>
     <div class="card bg-light-subtle mt-5">
         <h2 class="card-header text-center">Actualités</h1>

@@ -19,7 +19,7 @@ def generer_actualites():
         for filename in os.listdir('../data/md'):
             if filename.endswith('.md'):
                 try:
-                    with open(os.path.join('../data/md', filename), 'r') as f:
+                    with open(os.path.join('../data/md', filename), 'r', encoding='utf-8') as f:
                         contenu_md = f.read()
 
                     # Convertir Markdown en HTML
@@ -39,10 +39,10 @@ def generer_actualites():
                         'contenu': contenu_html
                     }
                     # Générer le HTML final avec le template
-                    output = template.render(actualite=actualite)
+                    output = template.render(actualite=actualite, file_depth="../")
 
                     file_path = f"../../public/actus/{nom_fichier_html}"
-                    with open(file_path, 'w') as file:
+                    with open(file_path, 'w', encoding='utf-8') as file:
                         file.write(output)
 
                     print(f"Génération de la page {nom_fichier_html} réussie")
