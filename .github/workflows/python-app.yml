@@ -40,3 +40,8 @@ jobs:
     - name: Create alias wwwroot about public
       run: |
         ln -s public wwwroot
+    - name: Deployement
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: wwwroot
+        branch: gh-pages
