@@ -1,6 +1,7 @@
 import csv
 from jinja2 import Environment, FileSystemLoader
 
+
 def generer_membres():
     try:
         # Configurer Jinja2
@@ -11,11 +12,11 @@ def generer_membres():
         return
 
     membres = []
-    
-    with open('../data/csv/membres-bureau-association.csv', 'r', encoding='utf-8') as file:
+    file_path = '../data/csv/membres-bureau-association.csv'
+    with open(file_path, 'r', encoding='utf-8') as file:
         csv_reader = csv.reader(file)
         next(csv_reader)  # Skip header row
-        
+
         for row in csv_reader:
             membres.append({
                 "prenom": row[0],
@@ -26,8 +27,9 @@ def generer_membres():
         output = template.render(membres=membres)
         with open('../../public/membres.html', 'w') as f:
             f.write(output)
-            
+
         print("Génération des membres terminée.")
+
 
 if __name__ == "__main__":
     try:
