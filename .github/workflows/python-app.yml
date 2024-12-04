@@ -39,4 +39,4 @@ jobs:
         python generate_pages.py
     - name: Create alias wwwroot about public
       run: |
-        ln -s public/ wwwroot/
+        ln -s public wwwroot
