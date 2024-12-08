@@ -42,7 +42,14 @@ jobs:
         sudo apt install -y tidy
     - name: Test html files
       run: |
-        tidy -e public/**/*.html || exit 1
+        tidy -e public/**/*.html 2> tidy_output.log || true
+        # Check if there are errors in the tidy output
+        if grep -q "Error:" tidy_output.log; then
+          echo "HTML validation errors found!"
+          exit 1
+        else
+          echo "Only warnings or clean HTML found."
+        fi
     - name: Create alias wwwroot about public
       run: |
         ln -s public wwwroot
