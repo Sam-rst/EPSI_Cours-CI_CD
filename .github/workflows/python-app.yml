@@ -42,7 +42,7 @@ jobs:
         sudo apt install -y tidy
     - name: Test html files
       run: |
-        tidy -e *.html || exit 1
+        tidy -e public/**/*.html || exit 1
     - name: Create alias wwwroot about public
       run: |
         ln -s public wwwroot
