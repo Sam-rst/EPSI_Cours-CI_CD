@@ -52,8 +52,8 @@ jobs:
         fi
     - name: Smoke test
       run: |
-          echo 'Initializing Smoke Tests on the GKE Cluster'
-          sudo ./tests/smoke_test.sh
+          echo 'Testing if the website is up'
+          curl -f -I https://sam-rst.github.io/EPSI_Cours-CI_CD/ || exit 1
     - name: Create alias wwwroot about public
       run: |
         ln -s public wwwroot
