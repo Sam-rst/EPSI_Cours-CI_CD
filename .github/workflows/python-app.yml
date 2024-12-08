@@ -53,7 +53,7 @@ jobs:
     - name: Smoke test
       run: |
           echo 'Initializing Smoke Tests on the GKE Cluster'
-          ./tests/smoke_test.sh
+          sudo ./tests/smoke_test.sh
     - name: Create alias wwwroot about public
       run: |
         ln -s public wwwroot
