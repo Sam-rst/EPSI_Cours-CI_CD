@@ -40,7 +40,7 @@ jobs:
     - name: Install html test
       run: |
         sudo apt install -y tidy
-    - name: Test html files
+    - name: Test html files before deployement
       run: |
         tidy -e public/**/*.html 2> tidy_output.log || true
         # Check if there are errors in the tidy output
