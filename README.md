@@ -3,6 +3,9 @@
 ## Introduction
 Ce projet, conçu par **Samuel R.** et **Hugo TD.**, a pour objectif de développer un site web dynamique généré à partir de fichiers Markdown (MD), d’images et de données au format CSV, utilisant un système de gestion de contenu flat-file (Flat File CMS). Ce site web est destiné à l'association de quartier fictive "Vivre aux Lilas" et présente des actualités, des informations sur les membres, ainsi que d'autres contenus pertinents. Le projet permet d’explorer des pratiques modernes en développement web, gestion de contenu, intégration continue, et collaboration d’équipe.
 
+## MEP du projet
+Voici le lien de l'application mise en production durant ce cours : [Vivre aux lilas](https://sam-rst.github.io/EPSI_Cours-CI_CD/)
+
 ## Prérequis
 Avant de commencer, assurez-vous que votre environnement répond aux exigences suivantes :
 - **Python 3.x**
