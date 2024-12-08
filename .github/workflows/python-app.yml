@@ -52,7 +52,6 @@ jobs:
         fi
     - name: Test de fumée
       run: |
-        sudo apt install -y curl
         curl -s -o /dev/null -w "%{http_code}" https://sam-rst.github.io/EPSI_Cours-CI_CD/ | grep -q 200 || (echo "Smoke test failed: site unreachable or unexpected status code" && exit 1)
     - name: Create alias wwwroot about public
       run: |
