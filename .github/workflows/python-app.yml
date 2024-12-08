@@ -40,7 +40,7 @@ jobs:
     - name: Install html test
       run: |
         sudo apt install -y tidy
-    - name: Test html files before deployement
+    - name: Test html files
       run: |
         tidy -e public/**/*.html 2> tidy_output.log || true
         # Check if there are errors in the tidy output
@@ -50,6 +50,10 @@ jobs:
         else
           echo "Only warnings or clean HTML found."
         fi
+    - name: Test de fumée
+      run: |
+        sudo apt install -y curl
+        curl -s -o /dev/null -w "%{http_code}" https://sam-rst.github.io/EPSI_Cours-CI_CD/ | grep -q 200 || (echo "Smoke test failed: site unreachable or unexpected status code" && exit 1)
     - name: Create alias wwwroot about public
       run: |
         ln -s public wwwroot
