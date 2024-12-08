@@ -37,6 +37,10 @@ jobs:
       run: |
         cd src/scripts/
         python generate_pages.py
+    - name: Test
+      run: |
+        sudo apt install -y tidy
+        tidy -e *.html || exit 1
     - name: Create alias wwwroot about public
       run: |
         ln -s public wwwroot

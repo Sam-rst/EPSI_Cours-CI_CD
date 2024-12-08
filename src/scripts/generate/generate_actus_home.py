@@ -3,6 +3,32 @@ import markdown
 from jinja2 import Environment, FileSystemLoader
 
 
+def lire_fichier_md(filename):
+    """Lire le contenu d'un fichier Markdown et le convertir en HTML."""
+    with open(os.path.join('../data/md', filename), 'r', encoding='utf-8') as f:
+        contenu_md = f.read()
+    return markdown.markdown(contenu_md)
+
+
+def construire_actualite(filename, contenu_html):
+    """Construire un dictionnaire d'actualité à partir du nom de fichier et du contenu HTML."""
+    nom_fichier_html = os.path.splitext(filename)[0] + '.html'
+    mots = os.path.splitext(filename)[0].split('-')
+    if len(mots) > 1:
+        imageFichier = '-'.join(mots[-2:]) + '.webp'
+    else:
+        imageFichier = os.path.splitext(filename)[0] + '.webp'
+
+    imageFichier = f'assets/img/{imageFichier}'
+
+    return {
+        'titre': os.path.splitext(filename)[0],
+        'extrait': contenu_html[:100] + '...',
+        'lien': f'actus/{nom_fichier_html}',
+        'imageFichier': imageFichier
+    }
+
+
 def generer_actualites_home():
     try:
         # Configurer Jinja2
@@ -19,42 +45,12 @@ def generer_actualites_home():
         for filename in os.listdir('../data/md'):
             if filename.endswith('.md'):
                 try:
-                    with open(os.path.join('../data/md', filename),
-                              'r',
-                              encoding='utf-8') as f:
-                        contenu_md = f.read()
-
-                    # Convertir Markdown en HTML
-                    contenu_html = markdown.markdown(contenu_md)
-
-                    # Écrire le fichier HTML
-                    nom_fichier_html = os.path.splitext(filename)[0] + '.html'
-                    mots = os.path.splitext(filename)[0].split('-')
-                    if len(mots) > 1:
-                        imageFichier = '-'.join(mots[-2:]) + '.webp'
-                    else:
-                        os.path.splitext(filename)[0]
-
-                    # Chemin d'accès à l'image
-                    imageFichier = f'assets/img/{imageFichier}'
-
-                    # Ajouter l'actualité à la liste
-                    actualites.append({
-                        # Titre basé sur le nom du fichier
-                        'titre': os.path.splitext(filename)[0],
-                        # Extrait des premiers 100 caractères
-                        'extrait': contenu_html[:100] + '...',
-                        # Lien vers l'article complet
-                        'lien': f'actus/{nom_fichier_html}',
-                        'imageFichier': imageFichier
-                    })
-
+                    contenu_html = lire_fichier_md(filename)
+                    actualites.append(construire_actualite(filename, contenu_html))
                 except IOError as e:
-                    print(f"Erreur lors de la lecture/écriture du \
-                        fichier {filename} : {e}")
+                    print(f"Erreur lors de la lecture/écriture du fichier {filename} : {e}")
                 except Exception as e:
-                    print(f"Erreur lors du traitement du fichier \
-                        {filename} : {e}")
+                    print(f"Erreur lors du traitement du fichier {filename} : {e}")
     except Exception as e:
         print(f"Erreur lors du parcours des fichiers : {e}")
     else:

@@ -3,6 +3,27 @@ import markdown
 from jinja2 import Environment, FileSystemLoader
 
 
+def lire_fichier_md(chemin):
+    with open(chemin, 'r', encoding='utf-8') as f:
+        return f.read()
+
+
+def generer_html(nom_fichier, contenu_md, template):
+    contenu_html = markdown.markdown(contenu_md)
+    mots = os.path.splitext(nom_fichier)[0].split('-')
+    if len(mots) > 1:
+        imageFichier = '-'.join(mots[-2:]) + '.webp'
+    else:
+        imageFichier = os.path.splitext(nom_fichier)[0]
+
+    actualite = {
+        'titre': os.path.splitext(nom_fichier)[0],
+        'imageFichier': imageFichier,
+        'contenu': contenu_html
+    }
+    return template.render(actualite=actualite, file_depth="../")
+
+
 def generer_actualites():
     try:
         # Configurer Jinja2
@@ -19,31 +40,10 @@ def generer_actualites():
         for filename in os.listdir('../data/md'):
             if filename.endswith('.md'):
                 try:
-                    with open(os.path.join('../data/md', filename),
-                              'r',
-                              encoding='utf-8') as f:
-                        contenu_md = f.read()
+                    contenu_md = lire_fichier_md(os.path.join('../data/md', filename))
+                    output = generer_html(filename, contenu_md, template)
 
-                    # Convertir Markdown en HTML
-                    contenu_html = markdown.markdown(contenu_md)
-
-                    # Écrire le fichier HTML
                     nom_fichier_html = os.path.splitext(filename)[0] + '.html'
-                    mots = os.path.splitext(filename)[0].split('-')
-                    if len(mots) > 1:
-                        imageFichier = '-'.join(mots[-2:]) + '.webp'
-                    else:
-                        os.path.splitext(filename)[0]
-
-                    actualite = {
-                        'titre': os.path.splitext(filename)[0],
-                        'imageFichier': imageFichier,
-                        'contenu': contenu_html
-                    }
-                    # Générer le HTML final avec le template
-                    output = template.render(actualite=actualite,
-                                             file_depth="../")
-
                     file_path = f"../../public/actus/{nom_fichier_html}"
                     with open(file_path, 'w', encoding='utf-8') as file:
                         file.write(output)

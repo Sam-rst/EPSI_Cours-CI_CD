@@ -6,7 +6,7 @@ from generate.generate_membres import generer_membres
 def generer_pages():
     generer_actualites()
     generer_actualites_home()
-    generer_membres()
+    generer_membres("membres-bureau-association.csv")
 
 
 if __name__ == "__main__":
