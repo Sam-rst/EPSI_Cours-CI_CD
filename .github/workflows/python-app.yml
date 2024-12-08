@@ -52,7 +52,8 @@ jobs:
         fi
     - name: Test de fumée
       run: |
-        curl -s -o /dev/null -w "%{http_code}" https://sam-rst.github.io/EPSI_Cours-CI_CD/ | grep -q 200 || (echo "Smoke test failed: site unreachable or unexpected status code" && exit 1)
+          echo 'Initializing Smoke Tests on the GKE Cluster'
+          ./tests/smoke_test
     - name: Create alias wwwroot about public
       run: |
         ln -s public wwwroot
