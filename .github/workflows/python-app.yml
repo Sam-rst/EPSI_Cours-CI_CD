@@ -50,7 +50,7 @@ jobs:
         else
           echo "Only warnings or clean HTML found."
         fi
-    - name: Test de fumée
+    - name: Smoke test
       run: |
           echo 'Initializing Smoke Tests on the GKE Cluster'
           ./tests/smoke_test
